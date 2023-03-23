@@ -61,7 +61,7 @@ export const tracks = [
     src: Ending_4,
     author: 'TOOBOE',
     thumbnail: Ending_4_Image,
-    color: '#c70e0f',
+    color: '#AF0D0E',
   },
   {
     title: '『In the backroom』',
