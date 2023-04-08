@@ -13,6 +13,7 @@ interface Track {
   author: string;
   thumbnail: string; // Remplacez 'string' par le type approprié pour l'image
   color: string;
+  video: string;
 }
 
 interface ControlsProps {

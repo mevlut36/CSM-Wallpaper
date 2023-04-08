@@ -13,10 +13,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   timeProgress,
   duration,
 }) => {
-  const handleProgressChange = () => {
+  const updateTimeProgress = () => {
     if (audioRef.current && progressBarRef.current) {
-      let time = audioRef.current.currentTime.toString();
-      time = progressBarRef.current.value;
+      audioRef.current.currentTime = parseFloat(progressBarRef.current.value);
     }
   };
 
@@ -37,8 +36,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       <input
         type="range"
         ref={progressBarRef}
-        defaultValue="0"
-        onChange={handleProgressChange}
+        max={duration}
+        value={timeProgress}
+        onChange={updateTimeProgress}
       />
       <span className="time">{formatTime(duration)}</span>
     </div>

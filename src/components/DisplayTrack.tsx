@@ -1,6 +1,7 @@
 import { BsMusicNoteBeamed } from "react-icons/bs";
 import AudioSpectrum from "react-audio-spectrum";
-import { RefObject } from "react";
+import { useRef, useState, RefObject } from "react";
+import view from "./AudioPlayer";
 
 interface DisplayTrackProps {
   currentTrack: any;
@@ -8,6 +9,10 @@ interface DisplayTrackProps {
   setDuration: (duration: number) => void;
   progressBarRef: RefObject<HTMLInputElement>;
   handleNext: () => void;
+}
+
+interface CheckedItems {
+  [key: string]: boolean;
 }
 
 const DisplayTrack: React.FC<DisplayTrackProps> = ({
@@ -34,7 +39,6 @@ const DisplayTrack: React.FC<DisplayTrackProps> = ({
         onEnded={handleNext}
         id="audio-element"
       />
-
       <div className="audio-info">
         <div className="audio-image">
           <AudioSpectrum
@@ -55,7 +59,7 @@ const DisplayTrack: React.FC<DisplayTrackProps> = ({
             gap={4}
           />
           {currentTrack.thumbnail ? (
-            <img src={currentTrack.thumbnail} alt="audio avatar" />
+           view() ? (<img src={currentTrack.thumbnail} alt="audio avatar" />) : (<iframe width="600" height="500" src={currentTrack.video+'?autoplay=1'}/>)
           ) : (
             <div className="icon-wrapper">
               <span className="audio-icon">
